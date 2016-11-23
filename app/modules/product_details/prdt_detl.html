@@ -118,9 +118,9 @@
                <!-- Display ADD TO CART and PICKUP IN STORE Buttons-->
                
                <div style="clear:left;margin-top:2.5cm" align="left">
-                   <button type="button" class="btn btn-default .btn-lg btn-pickup">PICK UP IN STORE</button>
-                   <button type="button" class="btn btn-default .btn-lg btn-cart">ADD TO CART</button>
-                   <p align="left" style="margin-left:1.8cm"><a href="#" style="color:#000;">find in a store</a></p>
+                   <button type="button" class="btn btn-default .btn-lg btn-pickup" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2">PICK UP IN STORE</button>
+                   <button type="button" class="btn btn-default .btn-lg btn-cart" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==1">ADD TO CART</button>
+                   <p align="left" style="margin-left:1.8cm" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2"><a href="#" style="color:#000;">find in a store</a></p>
                </div>
                
                 <!-- Display RETURN policy details-->
