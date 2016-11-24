@@ -2,17 +2,16 @@
 
 <html lang="en" ng-app="tgtApp">
 <head>
+  <title>Case Study</title>
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
   <link rel="stylesheet" href="styles/slick-theme.css">
-  <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
   <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
   <link rel="stylesheet" href="styles/app.css">
 </head>
@@ -20,11 +19,19 @@
 <body>
  
  <ul class="menu">
-   <li><a href="#!/product">Case Study Demo</a></li>
+   <li>
+   		<a href="#!/product">
+   			Case Study Demo
+   		</a>
+   </li>
  </ul>
   
  
   <div ng-view></div>
+  
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
   
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
@@ -32,8 +39,9 @@
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
   <script src="app.js"></script>
-  <script src="modules/services/prdtService.js"></script>
-  <script src="modules/product_details/prdt_detl_ctrl.js"></script>
+  <script src="modules/services/data_service.js"></script>
+  <script src="modules/product_details/prdt_detl_module.js"></script>
+  <script src="modules/product_details/prdt_detl_controller.js"></script>
   <script src="modules/directives/compilehtml.dir.js"></script>
 
   

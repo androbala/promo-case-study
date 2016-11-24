@@ -2,258 +2,179 @@
 <!-- content for first column-->
 
 <div class="col-md-6" align="center">
-
-        <div class="col-size">
-        
+      <div class="col-size">
             <!-- display product title-->
             <div class="div-title">{{product.title}}</div>
-           
             <!-- display product primary image-->
             <div class="image">
-            <img ng-src="{{primary_image}}" style="width:70%">
+           		<img ng-src="{{primaryImage}}" style="width:70%">
             </div>
-         
-            
             <!-- display carousel to scroll secondary images-->
             <div style="width:60%;">
-                <slick focusOnSelect="true" autoplay="true" autoplaySpeed="1000" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="false" slides-to-scroll="1" init-onload=true data="product.Images[0].AlternateImages">
-                  <div  ng-repeat="altimage in product.Images[0].AlternateImages">
-                     <img ng-src="{{altimage.image}}" style="width:100%" ng-click="changePrimaryImage(altimage.image)"/>
-                  </div>
+            	<slick focusOnSelect="true" autoplay="true" autoplaySpeed="1000" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="false" slides-to-scroll="1" init-onload=true data="product.Images[0].AlternateImages">
+                	<div  ng-repeat="altimage in product.Images[0].AlternateImages">
+                    	<img ng-src="{{altimage.image}}" style="width:100%" ng-click="changePrimaryImage(altimage.image)"/>
+                    </div>
                 </slick>
             </div>
-            
-            
             <!-- display overall star rating and no of reviews-->
             <div class="row div-rating">
-                <span style="float:left;">
-                    <span style="font-size:1.5em;" uib-rating ng-model="overall_rating" max="max" read-only="isReadonly" aria-labelledby="default-rating"></span>
-                    <b>overall</b>
+            	<span style="float:left;">
+                	<span style="font-size:1.5em;" uib-rating ng-model="overallRating" max="max" read-only="isReadonly" aria-labelledby="default-rating">
+                	</span>
+                    <b>
+                    	overall
+                    </b>
                 </span> 
                 <span style="float:right; margin-top:8px">
-                    <b><a href="#" style="color:#000;">view all {{product.CustomerReview[0].totalReviews}} reviews</a></b>
+                    <b>
+                    	<a href="#" style="color:#000;">
+                    		view all {{product.CustomerReview[0].totalReviews}} reviews
+                    	</a>
+                    </b>
                 </span>
             </div>
-            
-            
-            
+            <!-- review section -->
             <div class="row div-review">
-                
-                <div class="span6">
-                    <!-- display pro review-->
+            	<div class="span6">
+                	<!-- display pro review-->
                     <div class="span3 div-pro">
-                        <h4>PRO</h4>
+                    	<h4>
+                    		PRO
+                    	</h4>
                         Most helpful 4-5 star review
                         <hr/>
-                        <span uib-rating ng-model="pro_rating" max="max" read-only="isReadonly" aria-labelledby="default-rating"></span>
-                        <h4>{{product.CustomerReview[0].Pro[0].title}}</h4>
-                        <p align="left">{{product.CustomerReview[0].Pro[0].review}}</p>
-                        <p><a href="#">{{product.CustomerReview[0].Pro[0].screenName}}</a> {{pro_date | date}}</p>    
+                        <span uib-rating ng-model="proRating" max="max" read-only="isReadonly" aria-labelledby="default-rating"></span>
+                        <h4>
+                        	{{product.CustomerReview[0].Pro[0].title}}
+                        </h4>
+                        <p align="left">
+                        	{{product.CustomerReview[0].Pro[0].review}}
+                        </p>
+                        <p>
+                        	<a href="#">
+                        		{{product.CustomerReview[0].Pro[0].screenName}}
+                        	</a> 
+                        	{{proDate | date}}
+                        </p>    
                     </div>
-                
                     <!-- display con review-->
                     <div class="span3 div-con">
-                        <h4>CON</h4>
+                        <h4>
+                        	CON
+                        </h4>
                         Most helpful 1-2 star review
                         <hr/>
-                        <span uib-rating ng-model="con_rating" max="max" read-only="isReadonly" aria-labelledby="default-rating"></span>
-                        <h4>{{product.CustomerReview[0].Con[0].title}}</h4>
-                        <p>{{product.CustomerReview[0].Con[0].review}}</p>
-                        <p><a href="#">{{product.CustomerReview[0].Con[0].screenName}}</a> {{con_date | date}}</p> 
+                        <span uib-rating ng-model="conRating" max="max" read-only="isReadonly" aria-labelledby="default-rating"></span>
+                        <h4>
+                        	{{product.CustomerReview[0].Con[0].title}}
+                        </h4>
+                        <p>
+                        	{{product.CustomerReview[0].Con[0].review}}
+                        </p>
+                        <p>
+                        	<a href="#">
+                        		{{product.CustomerReview[0].Con[0].screenName}}
+                        	</a> 
+                        	{{conDate | date}}
+                        </p> 
                     </div>
-                  
-                </div>
-                
+      			</div>
             </div>
-            
-        </div>
+       </div>
 </div>
 
 <!-- content for second column-->
 <div class="col-md-6" align="center">
-    
-        <div class="col-size">
-                
-                <!-- Display Price -->
-                
-                <div align="left" style="margin-top:5px">
-                    <span class="price">{{product.Offers[0].OfferPrice[0].formattedPriceValue}}</span>
-                    online price
+  	   <div class="col-size">
+            <!-- Display Price -->
+            <div align="left" style="margin-top:5px">
+                <span class="price">
+                	{{product.Offers[0].OfferPrice[0].formattedPriceValue}}
+                </span>
+                online price
+            </div>
+            <hr/>
+            <!-- Display Promotions using ng-repeat on angular data-->
+            <div ng-repeat="promotion in product.Promotions">
+                  <p class="promo">
+                     <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                     {{promotion.Description[0].shortDescription}}
+                  </p>
+            </div>
+            <hr/>
+            <!-- Display Quantity Control-->
+            <div class="input-group col-xs-2 btn-qty" style="float:left;margin-top:0.1cm">
+                <div class="input-group-addon lbl-qty">
+                	quantity:
                 </div>
-                <hr/>
-                
-                <!-- Display Promotions using ng-repeat on angular data-->
-                
-                <div ng-repeat="promotion in product.Promotions">
-                      <p class="promo">
-                         <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-                         {{promotion.Description[0].shortDescription}}
-                      </p>
-                </div>
-                
-                <hr/>
-                
-                <!-- Display Quantity Control-->
-                
-                <div class="input-group col-xs-2 btn-qty" style="float:left;margin-top:0.1cm">
-                  
-                      <div class="input-group-addon lbl-qty">quantity:</div>
-                  
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number ctrl-qty"  disabled="disabled" data-type="minus" data-field="quant[1]">
-                              <span class="glyphicon glyphicon-minus-sign" style="font-size:28px;"></span>
-                          </button>
-                      </span>
-                      
-                      <input type="text" name="quant[1]" class="form-control input-number input-lg input-qty" value="1" min="1" max="10" style="width: 50px">
-                      
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number ctrl-qty" data-type="plus" data-field="quant[1]">
-                              <span class="glyphicon glyphicon-plus-sign" style="font-size:28px;"></span>
-                          </button>
-                      </span>
-                   
-               </div>
-               
-               <!-- Display ADD TO CART and PICKUP IN STORE Buttons-->
-               
-               <div style="clear:left;margin-top:2.5cm" align="left">
-                   <button type="button" class="btn btn-default .btn-lg btn-pickup" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2">PICK UP IN STORE</button>
-                   <button type="button" class="btn btn-default .btn-lg btn-cart" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==1">ADD TO CART</button>
-                   <p align="left" style="margin-left:1.8cm" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2"><a href="#" style="color:#000;">find in a store</a></p>
-               </div>
-               
-                <!-- Display RETURN policy details-->
-               
-               <div style="clear:left; margin-top:0.5cm" align="left">
-                   <span style="font-size:1.5em; float:left">returns | </span>
-                   <span style="font-size:.8em;"><p class="p-return">This item must be returned within 30days of the ship date. See return policy for details. 
-                   Prices, promotions, styles and availability may vary by store and onine</p></span>
-               </div>
-               
-               
-               <!-- Display ADD TO and SHARE button-->
-               
-               <div style="margin-top:0.8cm;" align="left">
-                   <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px">ADD TO REGISTRY</button>
-                   <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px">ADD TO LIST</button>
-                   <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px">SHARE</button>
-               </div>
-               
-               
-                <!-- Display Product features using ng-repeat on angular data-->
-               
-               <div align="left">
-                   <h3 class="h3-features" style="">product highlights</h3>
-                   <ul>
-                       <li ng-repeat="feature in product.ItemDescription[0].features">
-                         
-                          <div compile-html="feature"></div>
-                      </li>
-                   </ul>
-               </div>
-               
-        </div>   
+	            <span class="input-group-btn">
+    	        	<button type="button" class="btn btn-default btn-number ctrl-qty"  disabled="disabled" data-type="minus" data-field="quant[1]">
+        	        	<span class="glyphicon glyphicon-minus-sign" style="font-size:28px;"></span>
+            	    </button>
+                </span>
+                <input type="text" name="quant[1]" class="form-control input-number input-lg input-qty" value="1" min="1" max="10" style="width: 50px; background: none" readonly>
+                <span class="input-group-btn">
+                	<button type="button" class="btn btn-default btn-number ctrl-qty" data-type="plus" data-field="quant[1]">
+                    	<span class="glyphicon glyphicon-plus-sign" style="font-size:28px;"></span>
+                    </button>
+                </span>
+          	</div>
+           
+            <!-- Display ADD TO CART and PICKUP IN STORE Buttons-->
+            <div style="clear:left;margin-top:2.5cm" align="left">
+           		<button type="button" class="btn btn-default .btn-lg btn-pickup" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2">
+           			PICK UP IN STORE
+           		</button>
+                <button type="button" class="btn btn-default .btn-lg btn-cart" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==1">
+                	ADD TO CART
+                </button>
+                <p align="left" style="margin-left:1.8cm" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2">
+                	<a href="#" style="color:#000;">
+                		find in a store
+                	</a>
+                </p>
+            </div>
+           
+            <!-- Display RETURN policy details-->
+            <div style="clear:left; margin-top:0.5cm" align="left">
+               <span style="font-size:1.5em; float:left">
+               		returns | 
+               </span>
+               <span style="font-size:.8em;">
+               		<p class="p-return">
+               			This item must be returned within 30days of the ship date. See return policy for details. 
+                		Prices, promotions, styles and availability may vary by store and onine
+                	</p>
+               </span>
+            </div>
+
+           <!--Display ADD TO and SHARE button-->
+           <div style="margin-top:0.8cm;" align="left">
+               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px">
+               		ADD TO REGISTRY
+               </button>
+               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px">
+               		ADD TO LIST
+               </button>
+               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px">
+               		SHARE
+               </button>
+           </div>
+
+            <!-- Display Product features using ng-repeat on angular data-->
+            <div align="left">
+               <h3 class="h3-features" style="">
+                	product highlights
+               </h3>
+               <ul>
+                   <li ng-repeat="feature in product.ItemDescription[0].features">
+                   		<div compile-html="feature"></div>
+                   </li>
+               </ul>
+            </div>
+       </div>   
 </div> 
 
- 
- 
-<script>
-
-//slicker carousel initialization
-
-$(function () {
-  $('.slides').slick({
-      infinite: true,
-  slidesToShow: 3,
-slidesToScroll: 3,
-      arrows: true,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      dots: false,
-      
-      
-  });
-});
-
-
-
-//plugin bootstrap minus and plus for quantity control
-//http://jsfiddle.net/laelitenetwork/puJ6G/
-
-$('.btn-number').click(function(e){
-    e.preventDefault();
-    
-    fieldName = $(this).attr('data-field');
-    type      = $(this).attr('data-type');
-    var input = $("input[name='"+fieldName+"']");
-    var currentVal = parseInt(input.val());
-    if (!isNaN(currentVal)) {
-        if(type == 'minus') {
-            
-            if(currentVal > input.attr('min')) {
-                input.val(currentVal - 1).change();
-            } 
-            if(parseInt(input.val()) == input.attr('min')) {
-                $(this).attr('disabled', true);
-            }
-
-        } else if(type == 'plus') {
-
-            if(currentVal < input.attr('max')) {
-                input.val(currentVal + 1).change();
-            }
-            if(parseInt(input.val()) == input.attr('max')) {
-                $(this).attr('disabled', true);
-            }
-
-        }
-    } else {
-        input.val(0);
-    }
-});
-
-$('.input-number').focusin(function(){
-   $(this).data('oldValue', $(this).val());
-});
-
-$('.input-number').change(function() {
-    
-    minValue =  parseInt($(this).attr('min'));
-    maxValue =  parseInt($(this).attr('max'));
-    valueCurrent = parseInt($(this).val());
-    
-    name = $(this).attr('name');
-    if(valueCurrent >= minValue) {
-        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-    } else {
-        alert('Sorry, the minimum value was reached');
-        $(this).val($(this).data('oldValue'));
-    }
-    if(valueCurrent <= maxValue) {
-        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-    } else {
-        alert('Sorry, the maximum value was reached');
-        $(this).val($(this).data('oldValue'));
-    }
-    
-    
-});
-
-$(".input-number").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-             // Allow: Ctrl+A
-            (e.keyCode == 65 && e.ctrlKey === true) || 
-             // Allow: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
-
+<script src="/modules/product_details/qty_ctrl_plugin.js">
 </script>

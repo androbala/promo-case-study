@@ -9,7 +9,8 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'app.js',
-      'modules/services/prdtService.js',
+      'modules/product_details/prdt_detl_module.js',
+      'modules/services/*.js',
       'modules/directives/*.js',
       'modules/product_details/*.js'
     ],
