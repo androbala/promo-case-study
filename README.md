@@ -1,4 +1,5 @@
 # promo-case-study
+# Demo URL -> http://target-androbala.c9users.io/#!/product
 
 Run "npm start" from root directory to start the application (It also takescare of installing the dependencies)
 
