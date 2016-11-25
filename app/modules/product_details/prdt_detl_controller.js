@@ -38,5 +38,40 @@ angular.module('tgtApp.prdt_detl').controller('prdt_detl_ctrl', ["dataService","
   $scope.changePrimaryImage = function(img){
     $scope.primaryImage = img;
   }
+  
+  //initialization of data and logic for quantity control
+  $scope.qty = 1;
+  $scope.minQty = 1;
+  $scope.maxQty = 10;
+
+  $scope.plus = function()
+  {
+    if($scope.qty<$scope.maxQty){
+      $scope.qty= $scope.qty+1;
+    }
+  }
+  $scope.minus = function()
+  {
+    if($scope.qty>$scope.minQty){
+      $scope.qty= $scope.qty-1;
+    }
+  }
+
+  $scope.$watch('qty', function() 
+  {
+    if($scope.qty>$scope.minQty){
+      $scope.minusActive = false;
+    }
+    else if($scope.qty==$scope.minQty){
+      $scope.minusActive = true;
+    }
+
+    if($scope.qty<$scope.maxQty){
+      $scope.plusActive = false;
+    }
+    else if($scope.qty==$scope.maxQty){
+      $scope.plusActive = true;
+    }
+  }, true);
 
 }]);
