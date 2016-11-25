@@ -87,6 +87,7 @@
 <!-- content for second column-->
 <div class="col-md-6" align="center">
   	   <div class="col-size">
+
             <!-- Display Price -->
             <div align="left" style="margin-top:5px">
                 <span class="price">
@@ -95,6 +96,7 @@
                 online price
             </div>
             <hr/>
+
             <!-- Display Promotions using ng-repeat on angular data-->
             <div ng-repeat="promotion in product.Promotions">
                   <p class="promo">
@@ -103,24 +105,26 @@
                   </p>
             </div>
             <hr/>
+
             <!-- Display Quantity Control-->
             <div class="input-group col-xs-2 btn-qty" style="float:left;margin-top:0.1cm">
                 <div class="input-group-addon lbl-qty">
-                	quantity:
+                  quantity:
                 </div>
-	            <span class="input-group-btn">
-    	        	<button type="button" class="btn btn-default btn-number ctrl-qty"  disabled="disabled" data-type="minus" data-field="quant[1]">
-        	        	<span class="glyphicon glyphicon-minus-sign" style="font-size:28px;"></span>
-            	    </button>
-                </span>
-                <input type="text" name="quant[1]" class="form-control input-number input-lg input-qty" value="1" min="1" max="10" style="width: 50px; background: none" readonly>
                 <span class="input-group-btn">
-                	<button type="button" class="btn btn-default btn-number ctrl-qty" data-type="plus" data-field="quant[1]">
-                    	<span class="glyphicon glyphicon-plus-sign" style="font-size:28px;"></span>
-                    </button>
+                  <button type="button" class="btn btn-default ctrl-qty" ng-click="minus()" ng-disabled="minusActive">
+                    <span class="glyphicon glyphicon-minus-sign" style="font-size:28px;"></span>
+                  </button>
                 </span>
-          	</div>
-           
+                <input type="text" class="form-control input-lg input-qty" style="width: 50px; background: none" readonly ng-model="qty">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default ctrl-qty" ng-click="plus()" ng-disabled="plusActive">
+                      <span class="glyphicon glyphicon-plus-sign" style="font-size:28px;"></span>
+                  </button>
+                </span>
+            </div>
+
+
             <!-- Display ADD TO CART and PICKUP IN STORE Buttons-->
             <div style="clear:left;margin-top:2.5cm" align="left">
            		<button type="button" class="btn btn-default .btn-lg btn-pickup" ng-if="product.purchasingChannelCode==0 || product.purchasingChannelCode==2">
@@ -139,9 +143,9 @@
             <!-- Display RETURN policy details-->
             <div style="clear:left; margin-top:0.5cm" align="left">
                <span style="font-size:1.5em; float:left">
-               	   	<div style="padding-bottom:17px;">
+               		<div style="padding-bottom:15px;">
                		    returns |
-               	   	</div> 
+	                </div> 
                </span>
                <span style="font-size:.8em;">
                		<p class="p-return">
@@ -152,14 +156,14 @@
             </div>
 
            <!--Display ADD TO and SHARE button-->
-           <div align="left">
-               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px;margin-top:0.7cm;">
+           <div style="margin-top:0.6cm;" align="left">
+               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px;margin-top:0.2cm;">
                		ADD TO REGISTRY
                </button>
-               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px;margin-top:0.7cm;">
+               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px;margin-top:0.2cm;">
                		ADD TO LIST
                </button>
-               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px;margin-top:0.7cm;">
+               <button type="button" class="btn btn-default .btn-lg" style="background-color:#F1F1F1;border:none;width:145px;margin-top:0.2cm;">
                		SHARE
                </button>
            </div>
@@ -177,6 +181,3 @@
             </div>
        </div>   
 </div> 
-
-<script src="/modules/product_details/qty_ctrl_plugin.js">
-</script>
