@@ -2,31 +2,33 @@
 
 describe('Product Data Service', function() {
   
-    
-  var httpData = [{ title: 'Mixer', price: '190.99 USD'}];
-  var dataService, $httpBackend;
+  var httpData = {"CatalogEntryView":[{title:"Mixer", price: "199.99 USD", Images:[{PrimaryImage:[{image:"img.jpg"}]}], CustomerReview: [{consolidatedOverallRating:5,Pro:[{overallRating:5,datePosted:"11/25/2016"}],Con:[{overallRating:5,datePosted:"11/25/2016"}]}]}]};
+  var dataService, httpBackend;
   
   beforeEach(module('tgtApp'));
-  beforeEach(inject(function($injector) {
-     dataService = $injector.get('dataService');
-     $httpBackend = $injector.get('$httpBackend');
-     $httpBackend.when('GET', "/data/item-data.json").respond(httpData);
+  beforeEach(inject(function(_dataService_, $httpBackend) {
+     dataService = _dataService_;
+     httpBackend = $httpBackend;
   }));
-    
-  it('Data Service should be defined', function() {
-    expect(dataService.toBeDefined());
-  });
   
+  it('should be defined', function() {
+    expect(dataService).toBeDefined();
+  });
   it('getitems function should be defined', function() {
-    expect(dataService.getItems().toBeDefined());
+    expect(dataService.getItems).toBeDefined();
    });
- 
-  it('should load product data', function () {
-     dataService.getItems().then(function(response) {
-     	expect(response).toEqual(httpData); 
+  it('should return product data', function () {
+  	 httpBackend.whenGET("/data/item-data.json").respond(httpData);
+     dataService.getItems().then(function(data) {
+        expect(data).toEqual(httpData.CatalogEntryView); 
+        expect(data.length).toEqual(1);
      });
-     $httpBackend.flush();
+     httpBackend.flush();
    });
- 
+   
+   afterEach(function() {
+        httpBackend.verifyNoOutstandingExpectation();
+        httpBackend.verifyNoOutstandingRequest();
+    });
  
 });
