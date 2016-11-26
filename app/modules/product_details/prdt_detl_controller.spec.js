@@ -1,17 +1,17 @@
 describe('product controller', function() {
 	
-	var productCtrl;
-  	var scope;
-	var data = [{title:"Mixer", price: "199.99 USD", Images:[{PrimaryImage:[{image:"img.jpg"}]}],CustomerReview: [{consolidatedOverallRating:5,Pro:[{overallRating:5,datePosted:"11/25/2016"}],Con:[{overallRating:5,datePosted:"11/25/2016"}]}]}];
+  var productCtrl;
+  var scope;
+  var data = [{title:"Mixer", price: "199.99 USD", Images:[{PrimaryImage:[{image:"img.jpg"}]}],CustomerReview: [{consolidatedOverallRating:5,Pro:[{overallRating:5,datePosted:"11/25/2016"}],Con:[{overallRating:5,datePosted:"11/25/2016"}]}]}];
   
   beforeEach(module('tgtApp'));
   beforeEach(module('tgtApp.prdt_detl'));
   beforeEach(inject(function ($controller, $rootScope,_dataService_,_$q_) {
-		$q = _$q_;
-		deferred = _$q_.defer();
+    $q = _$q_;
+    deferred = _$q_.defer();
     scope = $rootScope.$new();
     mockDataSvc=_dataService_;
-  	spyOn(mockDataSvc,'getItems').and.returnValue(deferred.promise);
+    spyOn(mockDataSvc,'getItems').and.returnValue(deferred.promise);
     productCtrl = $controller('prdt_detl_ctrl', {
             $scope: scope,
             dataService: mockDataSvc
