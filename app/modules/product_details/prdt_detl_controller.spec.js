@@ -1,7 +1,7 @@
 describe('product controller', function() {
 	
 	var productCtrl;
-  var scope;
+  	var scope;
 	var data = [{title:"Mixer", price: "199.99 USD", Images:[{PrimaryImage:[{image:"img.jpg"}]}],CustomerReview: [{consolidatedOverallRating:5,Pro:[{overallRating:5,datePosted:"11/25/2016"}],Con:[{overallRating:5,datePosted:"11/25/2016"}]}]}];
   
   beforeEach(module('tgtApp'));
